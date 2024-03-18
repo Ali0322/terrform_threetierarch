@@ -20,7 +20,6 @@ echo "################### Building application tier image ###################"
 ECR_APPLICATION_TIER_REPO=$(aws ecr describe-repositories --repository-names ${ECR_APPLICATION_REPO_NAME} | jq -r '.repositories[0].repositoryUri')
 docker build -t ha-app-application-tier .
 docker tag ha-app-application-tier:latest $ECR_APPLICATION_TIER_REPO:latest
-
 echo "################### Pushing application tier image ###################"
 docker push $ECR_APPLICATION_TIER_REPO:latest
 
